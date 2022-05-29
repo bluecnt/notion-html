@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .root {
+        width: 100%;
+        height: 200px;
+        background-color: lightblue;
+      }
+    </style>
+
+    <script>
+      const _$ = (selector) => {
+        const elem = document.querySelector(selector);
+        if (!elem) {
+          console.error(`_$(): Invalid selector! => '${selector}'`);
+          debugger;
+        }
+        return elem;
+      };
+      const _getViewSize = () => {
+        const { innerWidth: w, innerHeight: h } = window;
+        return [w, h];
+      };
+
+      const displayWndSize = () => {
+        const root = _$(".root");
+        const [ww, wh] = _getViewSize();
+        root.textContent = `${ww}x${wh}`;
+      };
+
+      window.onload = (evt) => {
+        displayWndSize();
+      };
+
+      window.onresize = (evt) => {
+        displayWndSize();
+      };
+    </script>
+  </head>
+  <body>
+    <div class="root">Microsoft Windows NT</div>
+  </body>
+</html>
